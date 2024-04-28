@@ -1,0 +1,26 @@
+{
+  "name": "microservicio_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon index.js"
+  },
+  "author": "A2C.",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "md5": "^2.3.0",
+    "mssql": "^10.0.2",
+    "nodemailer": "^6.9.13",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
