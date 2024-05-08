@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const EjemploRepository = require("../repositories/EjemploRepository.js")
 
 
-router.post("/ejemplo", (req, res)=>{
+router.post("/ejemplo", async (req, res)=>{
     const ejemplo = await EjemploRepository.findAll();
     res.status(200).json(ejemplo)
 

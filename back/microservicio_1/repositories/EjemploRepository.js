@@ -1,20 +1,20 @@
-const Ejemplo = require("../models/ejemplo");
+const Ejemplo = require("../models/ejemplo.js");
 class EjemploRepository{
 
     async findAll(){
         return await Ejemplo.findAll();
     }
-    async findById(id){
-        return await Ejemplo.findByPk(id);
+    async findById(id_marca){
+        return await Ejemplo.findByPk(id_marca);
     }
     async create(user){
         return await Ejemplo.create(user);
     }
-    async update(id, user){
-        return await Ejemplo.update(user, {where:{id}});
+    async update(id_marca, user){
+        return await Ejemplo.update(user, {where:{id_marca}});
     }
-    async delete(id){
-        return await Ejemplo.destroy({where:{id}});
+    async delete(id_marca){
+        return await Ejemplo.destroy({where:{id_marca}});
     }
 }
 module.exports = new EjemploRepository();
