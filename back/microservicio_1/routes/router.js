@@ -3,20 +3,13 @@ const routes = require("../controllers/routes.controller.js");
 const mail = require("../controllers/mail.controller.js");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const EjemploRepository = require("../repositories/EjemploRepository.js")
 
-mapSpRouter("/prueba", "spPrueba");
-function mapSpRouter(route, spName){
-    router.post(route, (req, res)=>{
-        routes.callSp(spName, req, res);
-    })
-}
-router.post("/mailSender", (req, res)=>{
-    console.log(req.body.dataMail)
-    mail.enviarCorreo(req.body.dataMail, res);
+
+router.post("/ejemplo", (req, res)=>{
+    const ejemplo = await EjemploRepository.findAll();
+    res.status(200).json(ejemplo)
 
 })
-router.post("/registroGoogle", (req, res)=>{
-    console.log(req.body)
-    res.send("Listo")
-});
+
 module.exports = router;
