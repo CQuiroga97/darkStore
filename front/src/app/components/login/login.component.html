@@ -32,16 +32,16 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+				<form class="login100-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="wrap-input100 validate-input m-b-26" >
 						<span class="label-input100">Usuario:</span>
-						<input class="input100" type="text" name="username" placeholder="Ingrese usuario">
+						<input class="input100" type="email" formControlName="correo">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input m-b-18" >
 						<span class="label-input100">Contraseña:</span>
-						<input class="input100" type="password" name="pass" placeholder="Ingrese contraseña">
+						<input class="input100" type="password" name="clave" formControlName="clave">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -61,7 +61,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" >
 							Ingresar
 						</button>
 					</div>
