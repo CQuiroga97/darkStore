@@ -1,10 +1,10 @@
-const EjemploRepository = require('../repositories/EjemploRepository');
-const Ejemplo = require('../../microservicio_1/models/ejemplo');
+const UsuarioRepository = require('../repositories/UsuarioRepository');
+const usuario = require('../models/usuario');
 
 class DependencyContainer {
   constructor() {
     this.repositories = {
-      ejemploRepository: new EjemploRepository(Ejemplo)
+      usuarioRepository: new UsuarioRepository(usuario)
     };
   }
 
