@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/assets/fonts/NotoSans-Regular.ttf');
+}
+* {
+  font-family: 'Noto Sans'!important
+}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Noto Sans'; font-size: 16px; color: #333; }

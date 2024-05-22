@@ -3,6 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { UsuarioAuth } from '../../models/usuario.auth/usuario.auth';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +16,25 @@ import { Router } from '@angular/router';
 
 
 export class LoginComponent {
+  auth: UsuarioAuth = new UsuarioAuth();
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
 
   loginForm = this.formBuilder.group({
     correo: ['', [Validators.required, Validators.email]],
     clave: ['', Validators.required]
   });
+
 onSubmit() {
+
+  const correo = this.loginForm.get('correo')?.value as string;
+  const clave = this.loginForm.get('clave')?.value as string;
+
+  this.auth  = {
+    correo: correo,
+    clave: clave
+  };
+
   if(this.loginForm.invalid){
     Swal.fire({
       icon: 'warning',
@@ -38,8 +51,46 @@ onSubmit() {
       }
     });
     return;
+  } else{
+    this.authenticate();
   }
 }
+  authenticate() {
+    this.authService.authenticate(this.auth).subscribe({
+      next: (data) => {
+        console.log(data);
+        localStorage.setItem('token', data.accessToken);
+        this.goToInicio(data.rol);
+
+        Swal.fire({
+          title: 'Bienvenido',
+          text: 'Inicio de sesión exitoso',
+          icon: 'success',
+          timer: 2000,
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Usuario o contraseña incorrectos',
+          icon: 'error',
+          timer: 2000,
+        });
+      },
+    });
+  }
+  goToInicio(rol: any) {
+    if (rol.equals(0)) {
+      this.router.navigate(['/admin']);
+    } else if (rol.equals(1)) {
+      this.router.navigate(['/usuario']);
+    } else if (rol.equals(2)) {
+      this.router.navigate(['/marca']);
+    }
+  }
 
 }
 

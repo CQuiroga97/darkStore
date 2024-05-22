@@ -14,7 +14,12 @@ export class AuthService {
 
   // Metodo para autenticar usuario
   authenticate(user: UsuarioAuth){
-    return this.httpClient.post<any>(`${this.baseUrl}/login`,user);
+    return this.httpClient.post<any>(`${this.baseUrl}`,user);
   }
+
+    // Metodo para validar token
+    validateToken(req : any, res : any, next : any){
+      return this.httpClient.get<any>(`${this.baseUrl}/validate`);
+    }
 
 }
