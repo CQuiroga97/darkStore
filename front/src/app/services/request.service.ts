@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { enviroment } from '../components';
+// import { enviroment } from '../components';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,12 @@ export class RequestService {
   request(url:string,data:any) {
     return new Promise((resolve, reject)=>{
 
-      this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
+      // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
+      this.http.post("http://localhost:3000/api/" + url, {data:data}).subscribe({
         next:(res:any) =>{
             console.log(res)
             if(res != undefined || res != null){
-              let jsonData = JSON.parse(res.result);
-              resolve(jsonData);
+              resolve(res);
             }else{
               reject(null);
             }

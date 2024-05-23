@@ -6,5 +6,24 @@
 * {
   font-family: 'Noto Sans'!important
 }
+:root{
+
+  --polynesian-blue: #024889ff;
+  --battleship-gray: #8a8a8aff;
+  --snow: #faf6f6ff;
+  --paynes-gray: #4f6d7aff;
+  --falu-red: #771313ff;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Noto Sans'; font-size: 16px; color: #333; }
+app-root{
+  display: flex;
+  min-height: 100%;
+}
+.mat-mdc-outlined-button:not(:disabled){
+  color: var(--battleship-gray) !important;
+}
+.mat-mdc-outlined-button{
+  border-color: var(--falu-red) !important;
+}

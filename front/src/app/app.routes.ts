@@ -9,5 +9,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'inicio', component: InicioComponent, canActivate: [authGuard]},
-  { path: 'darkstore/inicio', component: InicioLogisticaComponent},
+  { path: 'darkstore/inicio', component: InicioLogisticaComponent, title: "Logistica | Inicio"},
 ];

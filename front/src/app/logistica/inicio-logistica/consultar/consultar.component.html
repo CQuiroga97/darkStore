@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row filterDiv p-5">
+        <div class="col-4">
+            <mat-form-field class="w-100">
+                <mat-label>Producto</mat-label>
+                <mat-select>
+                    <mat-option value="item.id_producto" *ngFor="let item of productos">
+                        {{item.descripcion}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field>
+                <mat-label>Marca</mat-label>
+                <mat-select>
+                    <mat-option value="item.id_marca" *ngFor="let item of marcas">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="col-2">
+            <button mat-stroked-button>Buscar</button>
+        </div>
+        <div class="col-2">
+            <button mat-stroked-button color="warn">Limpiar</button>
+        </div>
+    </div>
+</div>
