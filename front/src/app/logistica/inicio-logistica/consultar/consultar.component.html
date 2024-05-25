@@ -1,30 +1,82 @@
-<div class="container">
-    <div class="row filterDiv p-5">
-        <div class="col-4">
-            <mat-form-field class="w-100">
-                <mat-label>Producto</mat-label>
-                <mat-select>
-                    <mat-option value="item.id_producto" *ngFor="let item of productos">
-                        {{item.descripcion}}
-                    </mat-option>
-                </mat-select>
-              </mat-form-field>
-        </div>
-        <div class="col-4">
-            <mat-form-field>
+<div class="container pb-5">
+    <div class="row filterDiv p-5 justify-content-center">
+        <div class="col-3 d-flex">
+            <mat-form-field class="m-auto w-100">
                 <mat-label>Marca</mat-label>
-                <mat-select>
-                    <mat-option value="item.id_marca" *ngFor="let item of marcas">
+                <mat-select (selectionChange)="selectMarca($event)" [(value)]="marca">
+                    <mat-option value="{{null}}">
+                        All
+                    </mat-option>
+                    <mat-option value="{{item.id_marca}}" *ngFor="let item of marcas">
                         {{item.nombre}}
                     </mat-option>
                 </mat-select>
+                <mat-hint>Marcas registradas</mat-hint>
               </mat-form-field>
         </div>
-        <div class="col-2">
-            <button mat-stroked-button>Buscar</button>
+        <div class="col-4 d-flex">
+            <mat-form-field class="w-100 m-auto">
+                <mat-label>Producto</mat-label>
+                <mat-select [disabled]="productos.length==0" [(value)]="producto">
+                    <mat-option value="{{null}}">
+                        All
+                    </mat-option>
+                    <mat-option value="{{item.id_producto}}" *ngFor="let item of productos">
+                        {{item.descripcion}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Productos registrados</mat-hint>
+              </mat-form-field>
         </div>
-        <div class="col-2">
-            <button mat-stroked-button color="warn">Limpiar</button>
+        
+        <div class="col-1 d-flex">
+            <button mat-stroked-button class="m-auto" (click)="buscar()">Buscar</button>
+        </div>
+        <div class="col-1 d-flex">
+            <button mat-stroked-button color="warn" class="m-auto" (click)="limpiar()">Limpiar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex ">
+            <img src="../../../../assets/images/logistica/inventario/img3.png" alt="" *ngIf="dataSource._data?._value.length == 0" class="m-auto">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table m-auto" *ngIf="dataSource._data?._value.length > 0" matSort
+                #empTbSort="matSort">
+                <!-- Position Column -->
+                <ng-container matColumnDef="id_producto">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header="producto_id"> No. </th>
+                  <td mat-cell *matCellDef="let element"> {{element.producto.id_producto}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nombre_producto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header = "producto.referencia"> Referencia </th>
+                    <td mat-cell *matCellDef="let element"> {{element.producto.referencia}} </td>
+                </ng-container>
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+                    <td mat-cell *matCellDef="let element"> {{element.producto.descripcion}} </td>
+                </ng-container>
+                <ng-container matColumnDef="stand">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Stand </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ubicacione.estan}} </td>
+                </ng-container>
+                <ng-container matColumnDef="columna">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Columna </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ubicacione.columna}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nivel">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nivel </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ubicacione.nivel}} </td>
+                </ng-container>
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                </ng-container>
+              
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons *ngIf="dataSource._data?._value.length > 0"></mat-paginator>
         </div>
     </div>
 </div>

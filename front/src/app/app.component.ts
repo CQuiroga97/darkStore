@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,12 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(private router:Router){
+
+  }
   menu = 1;
   title = 'front';
+  cambiarRuta(ruta:any){
+    this.router.navigate([ruta]);
+  }
 }

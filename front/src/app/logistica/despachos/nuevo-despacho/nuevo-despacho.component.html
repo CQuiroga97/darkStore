@@ -1,0 +1,139 @@
+<div class="container w-100 m-auto p-3">
+    <div class="row">
+        <h1>Crear nuevo despacho</h1>
+        <span>
+            Da clic sobre los pedidos que se harán en este nuevo despacho, una vez tengas la lista de <b>pedidos a enviar</b>, ingresa la información del depacho
+        </span>
+    </div>
+    <hr>
+    <div class="row mt-3">
+        <div class="col-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Pedidos disponibles</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="divPedidos">
+                <div class="m-auto h-100">
+                    <div class="col-12 d-flex m-auto" *ngIf="pedidos.length == 0">
+                        <img src="../../../../assets/images/logistica/despachos/img4.png" alt="" class="m-auto">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+
+                    <div class="divPedido  col-11" *ngFor="let pedido of pedidos" (click)="agregarPedido(pedido)">
+                        <div class="divHover_1"></div>
+                        <div class="row">
+                            <div class="divPara mb-1">
+                                <div class="row">
+        
+                                    <div class="col-3">
+                                        <b>{{pedido.codigo_pedido}}</b>
+                                    </div>
+                                    <div class="col-9">
+                                        <span><b>Para: </b>{{pedido.detalles_pedidos[0].cliente.apellido}} {{pedido.detalles_pedidos[0].cliente.nombre}}</span><br>
+                                        <span><b>Dirección: </b>{{pedido.detalles_pedidos[0].direccion_destino}} </span><br>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+        
+                            <div class="detalle d-flex" *ngFor="let detalle of pedido.detalles_pedidos">
+                                <div class="info m-auto">
+                                    
+                                    <span>{{detalle.producto.referencia}} X {{detalle.cantidad}}</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 h-100 m-auto">
+            <img src="../../../../assets/images/logistica/despachos/img3.png" alt="" class="w-100 m-auto opacity-50">
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Pedidos a enviar</h2>
+                    <hr>
+                </div>
+            </div>
+            
+            <div class="divPedidos">
+                <div class="row p-4 w-75" *ngIf="pedidosEnviar.length == 0">
+                    <h3>Se debe hacer al menos un despacho</h3>
+                </div>
+                <div class="row justify-content-center">
+
+                    <div class="divPedido  col-11" *ngFor="let pedido of pedidosEnviar" (click)="eliminarPedido(pedido)">
+                        <div class="divHover_2"></div>
+                        <div class="row">
+                            <div class="divPara mb-1">
+                                <div class="row">
+        
+                                    <div class="col-3">
+                                        <b>{{pedido.codigo_pedido}}</b>
+                                    </div>
+                                    <div class="col-9">
+                                        <span><b>Para: </b>{{pedido.detalles_pedidos[0].cliente.apellido}} {{pedido.detalles_pedidos[0].cliente.nombre}}</span><br>
+                                        <span><b>Dirección: </b>{{pedido.detalles_pedidos[0].direccion_destino}} </span><br>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+        
+                            <div class="detalle d-flex" *ngFor="let detalle of pedido.detalles_pedidos">
+                                <div class="info m-auto">
+                                    
+                                    <span>{{detalle.producto.referencia}} X {{detalle.cantidad}}</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Información de la transportadora</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Transportadora</mat-label>
+                        <input matInput placeholder="Transportadora"  [(ngModel)]="transportadora">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Código de despacho</mat-label>
+                        <input matInput placeholder="Código" [(ngModel)]="codigo_despacho">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width w-100">
+                        <mat-label>Número de guía</mat-label>
+                        <input matInput placeholder="Guía"  [(ngModel)]="numero_guia">
+                      </mat-form-field>
+                </div>
+                <div class="col-12 d-flex">
+                    <img [src]="pedidosEnviar.length == 0?'../../../../assets/images/logistica/despachos/img5.png':'../../../../assets/images/logistica/despachos/img6.png'" alt="" class="w-50 m-auto">
+                </div>
+                <div class="col-6 p-4">
+                    <button mat-flat-button color="warn" class="w-100" [disabled]="pedidosEnviar.length == 0" (click)="guardar()">
+                        {{pedidosEnviar.length == 0?"Se deben seleccionar los pedidos":"Despachar " + cantidadProductos + " productos"}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

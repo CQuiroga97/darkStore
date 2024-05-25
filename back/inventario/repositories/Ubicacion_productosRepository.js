@@ -1,6 +1,6 @@
 const productosModel = require("../models/productos")
 const ubicacionesModel = require("../models/ubicaciones")
-
+const sequelize = require("../config/database.js");
 
 class Ubicacion_productosRepository{
 
@@ -20,6 +20,34 @@ class Ubicacion_productosRepository{
     async update(id_ubicacion_producto, ubicacion_producto){
         return await this.Ubicacion_productosModel.update(ubicacion_producto, {where:{id_ubicacion_producto}});
     }
+    
+  async decrementMultipleInventoryItems(items) {
+    console.log(items)
+    const transaction = await sequelize.transaction();
+    try {
+
+      for (const item of items) {
+        const { producto_id, cantidad } = item;
+        await this.Ubicacion_productosModel.update(
+          {
+            cantidad: sequelize.literal(`cantidad - ${cantidad}`)
+          },
+          {
+            where: { producto_id: producto_id },
+            transaction: transaction
+          }
+        );
+      }
+
+      await transaction.commit();
+      return 1
+    } catch (error) {
+      // Revertir cambios si ocurre un error
+      if (transaction) await transaction.rollback();
+      console.error('Error updating multiple inventories:', error);
+      return 0
+    }
+  }
     async delete(id_ubicacion_producto){
         return await this.Ubicacion_productosModel.destroy({where:{id_ubicacion_producto}});
     }

@@ -58,7 +58,6 @@ onSubmit() {
   authenticate() {
     this.authService.authenticate(this.auth).subscribe({
       next: (data) => {
-        console.log(data);
         localStorage.setItem('token', data.accessToken);
         this.goToInicio(data.rol);
 
