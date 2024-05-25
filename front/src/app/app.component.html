@@ -8,18 +8,18 @@
                     </div>
                     <div class="col-7 menuContent d-flex">
                         <div class="menuLogistica w-100 d-flex m-auto" *ngIf="menu == 1">
-                            <div class="btn-menu m-auto d-flex">
+                            <div class="btn-menu m-auto d-flex" (click)="cambiarRuta('darkstore/inventario')">
                                 <span class="m-auto">
                                     Inventario
                                 </span>
                             </div>
-                            <div class="btn-menu m-auto d-flex">
+                            <div class="btn-menu m-auto d-flex" (click)="cambiarRuta('darkstore/pedidos')">
                                 <span class="m-auto">
 
                                     Pedidos
                                 </span>
                             </div>
-                            <div class="btn-menu m-auto d-flex">
+                            <div class="btn-menu m-auto d-flex" (click)="cambiarRuta('darkstore/despachos')">
                                 <span class="m-auto">
 
                                     Despachos

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @font-face {
   font-family: 'Noto Sans';
   src: url('/assets/fonts/NotoSans-Regular.ttf');
@@ -26,4 +27,10 @@ app-root{
 }
 .mat-mdc-outlined-button{
   border-color: var(--falu-red) !important;
+}
+.mat-mdc-tab .mdc-tab__text-label{
+  color: var(--battleship-gray) !important;
+}
+.material-icons{
+  font-family: 'Material Icons' !important;
 }

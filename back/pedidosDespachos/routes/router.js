@@ -8,9 +8,10 @@ const Ubicacion_productosRepository = dependencyContainer.getRepository('Ubicaci
 const MarcaRepository = dependencyContainer.getRepository('MarcaRepository');
 const PedidosRepository = dependencyContainer.getRepository('PedidosRepository');
 const DespachosRepository = dependencyContainer.getRepository('DespachosRepository');
+const PedidosDetallesRepository = dependencyContainer.getRepository('PedidosDetallesRepository');
 
 router.post("/getPedidos", async (req, res)=>{
-    const pedidos = await PedidosRepository.findAll();
+    const pedidos = await PedidosRepository.findAll(req.body.estado);
     res.status(200).json(pedidos)
 })
 router.post("/getPedidosById", async (req, res)=>{
@@ -18,8 +19,11 @@ router.post("/getPedidosById", async (req, res)=>{
     res.status(200).json(pedidos)
 })
 router.post("/createPedido", async (req, res)=>{
-    const pedidos = await PedidosRepository.create(req.body);
-    res.status(200).json(pedidos)
+    console.log(req.body)
+    const pedidos = await PedidosRepository.crearPedidoConDetalles(req.body.pedido, req.body.detalles);
+    console.log(pedidos)
+    const detalles = await PedidosDetallesRepository.create(req.body.detalles, pedidos.dataValues.id_pedido);
+    res.status(200).json(detalles)
 })
 router.post("/deletePedido", async (req, res)=>{
     const pedidos = await PedidosRepository.delete(req.body.id_pedido);

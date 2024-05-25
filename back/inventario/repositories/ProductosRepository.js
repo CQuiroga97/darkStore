@@ -11,6 +11,10 @@ class ProductosRepository{
     async findById(id_producto){
         return await this.productosModel.findByPk(id_producto);
     }
+    async findByMarca(marca_id){
+        return await this.productosModel.findAll({where:{marca_id}});
+    }
+    
     async create(producto){
         return await this.productosModel.create(producto);
     }

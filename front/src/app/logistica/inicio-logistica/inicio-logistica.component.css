@@ -1,0 +1,8 @@
+app-almacenar-inventario{
+    display: flex;
+    height: 500px;
+    background-image: url(../../../assets/images/logistica/inventario/img1.png);
+    background-repeat: no-repeat;
+    background-position:50px center ;
+    background-size: auto 90%;
+}

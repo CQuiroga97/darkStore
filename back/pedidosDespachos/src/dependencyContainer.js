@@ -10,6 +10,8 @@ const PedidosRepository = require('../repositories/PedidosRepository');
 const pedido = require('../models/pedidos');
 const DespachosRepository = require('../repositories/DespachosRepository');
 const despacho = require('../models/despachos');
+const PedidosDetallesRepository = require('../repositories/PedidosDetallesRepository');
+const detalles_pedidos = require('../models/detallesPedidos');
 
 class DependencyContainer {
   constructor() {
@@ -20,6 +22,7 @@ class DependencyContainer {
       MarcaRepository: new MarcaRepository(marca),
       PedidosRepository: new PedidosRepository(pedido),
       DespachosRepository: new DespachosRepository(despacho),
+      PedidosDetallesRepository: new PedidosDetallesRepository(detalles_pedidos),
     };
   }
 

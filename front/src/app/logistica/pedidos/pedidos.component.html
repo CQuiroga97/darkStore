@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Pedidos</h1>
+            <span>
+                Esta es la lista de los pedidos realizados por los clientes
+            </span>
+        </div>
+    </div>
+    <div class="row p-3" *ngFor="let pedido of pedidos">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>Código:</b> {{pedido.codigo_pedido}} ({{pedido.fecha_pedido}})
+              </mat-panel-title>
+              <mat-panel-description>
+                Total de productos: {{pedido.detalles_pedidos.length}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-1 d-flex">
+                        <img src="../../../assets/images/logistica/pedidos/img1.png" alt="" class="w-100 m-auto">
+                    </div>
+                    <div class="col-3 p-3 divCliente d-flex">
+                        <div class="row mt-auto">
+                            <div class="col-4">
+                                Nombre
+                            </div>
+                            <div class="col-8">
+                                {{pedido.detalles_pedidos[0].cliente.nombre}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Apellido
+                            </div>
+                            <div class="col-8">
+                                {{pedido.detalles_pedidos[0].cliente.apellido}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Documento 
+                            </div>
+                            <div class="col-8">
+                                {{pedido.detalles_pedidos[0].cliente.tipo_documento}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                Telefono
+                            </div>
+                            <div class="col-8">
+                                {{pedido.detalles_pedidos[0].cliente.telefono}}
+                            </div>
+                        </div>
+                        <div class="row mb-auto">
+                            <div class="col-4">
+                                Correo
+                            </div>
+                            <div class="col-8">
+                                {{pedido.detalles_pedidos[0].cliente.correo}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 p-3 ps-5">
+                        <div class="row">
+                            Productos a enviar:
+                        </div>
+                        <div class="row" *ngFor="let producto of pedido.detalles_pedidos">
+                            <div class="col-3">
+                                {{producto.producto.referencia}}
+                            </div>
+                            <div class="col-6">
+                                {{producto.producto.descripcion}}
+                            </div>
+                            <div class="col-2">
+                                X{{producto.cantidad}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="row d-flex">
+                            <img src="../../../../assets/images/logistica/pedidos/img3.png" alt="" class="w-75 m-auto">
+                        </div>
+                        <div class="row p-4">
+                            <button mat-raised-button color="accent" (click)="preparar(pedido)">Preparar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </mat-expansion-panel>
+    </div>
+    <div class="row p-3 justify-content-center" *ngIf="pedidos.length == 0 && !loading">
+        <div class="col-4">
+            <img src="../../../assets/images/logistica/pedidos/img4.png" alt="" class="w-100">
+        </div>
+    </div>
+    <div class="row p-3 justify-content-center" *ngIf="loading">
+        <div class="col-4">
+            <mat-spinner class="w-100"></mat-spinner>
+        </div>
+    </div>
+</div>

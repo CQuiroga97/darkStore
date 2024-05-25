@@ -6,6 +6,10 @@ const ubicaciones = require('../models/ubicaciones');
 const ubicacion_productos = require('../models/ubicacion_productos');
 const productos = require('../models/productos');
 const marca = require('../models/marca');
+const detalles_ingresosRepository = require('../repositories/detalles_ingresosRepository');
+const detalles_ingresos = require('../models/detalles_ingresos');
+const ingresosRepository = require('../repositories/ingresosRepository');
+const ingresos = require('../models/ingresos');
 
 class DependencyContainer {
   constructor() {
@@ -14,6 +18,8 @@ class DependencyContainer {
       Ubicacion_productosRepository: new Ubicacion_productosRepository(ubicacion_productos),
       ProductosRepository: new ProductosRepository(productos),
       MarcaRepository: new MarcaRepository(marca),
+      detalles_ingresosRepository: new detalles_ingresosRepository(detalles_ingresos),
+      ingresosRepository: new ingresosRepository(ingresos),
     };
   }
 

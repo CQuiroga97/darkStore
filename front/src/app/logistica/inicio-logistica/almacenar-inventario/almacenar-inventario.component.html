@@ -1,0 +1,72 @@
+<div class="container m-auto background">
+    <div class="row">
+        <h1>Almacenar</h1>
+        <hr>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <mat-form-field class="m-auto w-100">
+                <mat-label>Marca</mat-label>
+                <mat-select (selectionChange)="selectMarca($event)" [(value)]="marcaSel">
+                    <mat-option value="{{item.id_marca}}" *ngFor="let item of marcas">
+                        {{item.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Marcas registradas</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-3">
+            <mat-form-field class="m-auto w-100">
+                <mat-label>Productos</mat-label>
+                <mat-select [disabled]="productos.length==0" (selectionChange)="selectProducto($event)" [(value)]="productoSel">
+                    <mat-option value="{{item.producto.id_producto}}" *ngFor="let item of productos">
+                        {{item.producto.descripcion}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Productos por marca</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-1 h-100">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right_alt" class="fs-100 h-100 w-100"></mat-icon>
+        </div>
+        <div class="col-2">
+            <mat-form-field class="m-auto w-100">
+                <mat-label>Stands</mat-label>
+                <mat-select [disabled]="stands.length==0" (selectionChange)="selectStand($event)" [(value)]="standSel">
+                    <mat-option value={{stand.estan}} *ngFor="let stand of stands">
+                        {{stand.estan}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Estanterias disponibles</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-2">
+            <mat-form-field class="m-auto w-100">
+                <mat-label>Columnas</mat-label>
+                <mat-select [disabled]="columnas.length==0" (selectionChange)="selectColumna($event)" [(value)]="columnaSel">
+                    <mat-option value="{{item.columna}}" *ngFor="let item of columnas">
+                        {{item.columna}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Columnas disponibles</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-2">
+            <mat-form-field class="m-auto w-100">
+                <mat-label>Niveles</mat-label>
+                <mat-select [disabled]="niveles.length==0" [(value)]="idUbicacion">
+                    <mat-option value="{{item.id_ubicacion}}" *ngFor="let item of niveles">
+                        {{item.nivel}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Niveles</mat-hint>
+              </mat-form-field>
+        </div>
+        
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-2">
+            <button mat-stroked-button color="warn" class="m-auto" (click)="almacenar()">Almacenar</button>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,6 @@
+const clientes = require("../models/clientes");
+const detalles_pedidos = require("../models/detallesPedidos");
+const productos = require("../models/productos");
 
 class PedidosRepository{
 
@@ -5,8 +8,19 @@ class PedidosRepository{
         this.pedidoModel = pedidoModel;
       }
 
-    async findAll(){
-        return await this.pedidoModel.findAll();
+    async findAll(estado){
+        return await this.pedidoModel.findAll(
+            {
+                include:[{
+                    model:detalles_pedidos,
+                    include:[{
+                        model:clientes
+                    },{
+                        model:productos
+                    }]
+                }], where:{estado:estado}
+            }
+        );
     }
     async findById(id_pedido){
         return await this.pedidoModel.findByPk(id_pedido);
@@ -20,5 +34,9 @@ class PedidosRepository{
     async delete(id_pedido){
         return await this.pedidoModel.destroy({where:{id_pedido}});
     }
+    async crearPedidoConDetalles(pedidoData, detallesData) {
+        return await this.pedidoModel.create(pedidoData);
+    }
+    
 }
 module.exports = PedidosRepository;
