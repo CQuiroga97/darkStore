@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { router } from './routes';
 import 'reflect-metadata';
-import { postgresConfig } from './config/database/postgres';
+import { postgresConfig } from './config/postgres';
 import morgan from 'morgan';
 
 const PORT = process.env.PORT || 3000;

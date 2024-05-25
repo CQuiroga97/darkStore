@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { postgresConfig } from '../config/database/postgres';
+import { postgresConfig } from '../config/postgres';
 import { BrandRepository } from '../repositories/brand.repository';
 import { BrandService } from '../services/brand.service';
 import { BrandController } from '../controllers/brand.controller';
