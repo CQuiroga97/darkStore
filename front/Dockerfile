@@ -24,7 +24,7 @@ COPY tsconfig*.json $DIR
 COPY src $DIR/src
 
 EXPOSE 3000
-CMD ["npm", "run", "start","--port","3000"]
+CMD ["npm", "run", "start"]
 
 
 # ===== BUILD =====
@@ -61,4 +61,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3000
 USER $USER
-CMD ["dumb-init","node", "build/main.js","--port","3000"]
+CMD ["dumb-init","node", "build/main.js"]
