@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
-import { Brand } from '../../entities/brand.entity';
+import { Brand } from '../entities/brand.entity';
 import 'dotenv/config';
-import { User } from '../../entities/user.entity';
+import { User } from '../entities/user.entity';
 
 export const postgresConfig = new DataSource({
     type: 'postgres',

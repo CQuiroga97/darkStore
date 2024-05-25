@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 import 'dotenv/config';
-import { Product } from '../../entities/product.entity';
-import { Brand } from '../../entities/brand.entity';
-import { Category } from '../../entities/category.entity';
+import { Product } from '../entities/product.entity';
+import { Brand } from '../entities/brand.entity';
+import { Category } from '../entities/category.entity';
 
 console.log('DB_URL', process.env.DB_URL);
 export const postgresConfig = new DataSource({
