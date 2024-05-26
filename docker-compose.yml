@@ -62,6 +62,37 @@ services:
       - /app/node_modules
     networks:
       - darkstore-network
+  reports:
+    container_name: reports
+    restart: unless-stopped
+    build:
+      context: ./back/reports-microservice
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4300:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
+  reports-dev:
+    container_name: reports-dev
+    restart: unless-stopped
+    build:
+      context: ./back/reports-microservice
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4300:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    volumes:
+      - ./back/reports-microservice:/app
+      - /app/node_modules
+    networks:
+      - darkstore-network
   front:
     container_name: front
     restart: unless-stopped
