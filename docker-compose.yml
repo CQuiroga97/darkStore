@@ -93,6 +93,68 @@ services:
       - /app/node_modules
     networks:
       - darkstore-network
+  pedidosdespachos:
+    container_name: pedidosDespachos
+    restart: unless-stopped
+    build:
+      context: ./back/pedidosDespachos
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
+  pedidosdespachos-dev:
+    container_name: pedidosDespachos-dev
+    restart: unless-stopped
+    build:
+      context: ./back/pedidosDespachos
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    volumes:
+      - ./back/pedidosDespachos:/app
+      - /app/node_modules
+    networks:
+      - darkstore-network
+  inventario:
+    container_name: inventario
+    restart: unless-stopped
+    build:
+      context: ./back/inventario
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4500:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
+  inventario-dev:
+    container_name: inventario-dev
+    restart: unless-stopped
+    build:
+      context: ./back/inventario
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4500:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    volumes:
+      - ./back/inventario:/app
+      - /app/node_modules
+    networks:
+      - darkstore-network
   front:
     container_name: front
     restart: unless-stopped
@@ -101,7 +163,7 @@ services:
       dockerfile: Dockerfile
       target: production
     ports:
-      - "4200:3000"
+      - "4600:3000"
     networks:
       - darkstore-network
   front-dev:
@@ -112,7 +174,7 @@ services:
       dockerfile: Dockerfile
       target: dev
     ports:
-      - "4200:3000"
+      - "4600:3000"
     volumes:
       - ./front:/app
       - /app/node_modules

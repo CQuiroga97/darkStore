@@ -5,7 +5,7 @@ const cors = require("cors");
 const http = require('http')
 const indexRouter = require("./routes/router.js");
 const httpServer = new http.Server(app);
-const port = (process.env.PORT || 8080);
+const port = (process.env.PORT || 3001);
 const bodyParser = require("body-parser");
 
 
@@ -16,5 +16,6 @@ app.use("/api", indexRouter);
 
 
 httpServer.listen(port, '0.0.0.0', ()=>{
+    console.log(port)
     console.log("Servidor iniciado.")
 })
