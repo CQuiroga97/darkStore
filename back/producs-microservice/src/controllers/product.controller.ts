@@ -10,9 +10,9 @@ import { validateOrReject } from 'class-validator';
 export class ProductController {
     constructor(private readonly service: ProductService) {}
 
-    Get = ({ headers }: Request, res: Response) => {
+    Get = async ({}: Request, res: Response) => {
         try {
-            const products = this.service.getProducts();
+            const products = await this.service.getProducts();
             return res.status(200).json({ status: 'success', data: products });
         } catch (error) {
             return handleError(error, res);
@@ -42,6 +42,15 @@ export class ProductController {
             return res
                 .status(200)
                 .json({ status: 'success', data: updatedProduct });
+        } catch (error) {
+            return handleError(error, res);
+        }
+    };
+
+    Delete = async ({ params }: Request, res: Response) => {
+        try {
+            await this.service.deleteProduct(+params.id);
+            return res.status(200).json({ status: 'success' });
         } catch (error) {
             return handleError(error, res);
         }

@@ -25,5 +25,6 @@ const controller = new ProductController(productService);
 productRouter.post(`${BASE_PATH}`, controller.Create);
 productRouter.get(`${BASE_PATH}`, controller.Get);
 productRouter.put(`${BASE_PATH}/:id`, controller.Update);
+productRouter.delete(`${BASE_PATH}/:id`, controller.Delete);
 
 export { productRouter };
