@@ -7,3 +7,7 @@ export interface ReportIncomeFilter extends Filter {
     status?: string;
     brandId?: number;
 }
+
+export interface ReportInventoryProductFilter {
+    brand?: string;
+}

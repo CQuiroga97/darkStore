@@ -1,5 +1,4 @@
 version: "4.2"
-
 services:
   products:
     container_name: products
@@ -90,6 +89,37 @@ services:
       - flyway
     volumes:
       - ./back/reports-microservice:/app
+      - /app/node_modules
+    networks:
+      - darkstore-network
+  income:
+    container_name: income
+    restart: unless-stopped
+    build:
+      context: ./back/income-microservice
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
+  income-dev:
+    container_name: income-dev
+    restart: unless-stopped
+    build:
+      context: ./back/income-microservice
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    volumes:
+      - ./back/income-microservice:/app
       - /app/node_modules
     networks:
       - darkstore-network
