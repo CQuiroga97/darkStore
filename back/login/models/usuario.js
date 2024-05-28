@@ -11,6 +11,7 @@ const usuario = sequelize.define('usuario', {
     correo: DataTypes.STRING,
     clave: DataTypes.STRING,
     activo: DataTypes.BOOLEAN,
+    rol: DataTypes.BIGINT
 },{
     timestamps: false
 })
