@@ -10,4 +10,8 @@ export class CategoryService {
     async findByID(id: number) {
         return this.repository.findByID(id);
     }
+
+    async getCategories() {
+        return this.repository.getCategories();
+    }
 }

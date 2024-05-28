@@ -21,8 +21,8 @@ export class User {
     @Column({ name: 'clave' })
     password: string;
 
-    @Column({ name: 'rol', type: 'int' })
-    role: number;
+    // @Column({ name: 'rol', type: 'int' })
+    // role: number;
 
     @Column({ type: 'boolean', default: true, name: 'activo' })
     isActive: boolean;

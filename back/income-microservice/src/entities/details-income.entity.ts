@@ -19,6 +19,9 @@ export class IncomeDetail {
     @Column({ name: 'producto_id' })
     productId: number;
 
+    @Column({ name: 'fecha_ingreso' })
+    incomeDate: Date;
+
     @Column({ name: 'cantidad' })
     quantity: number;
 

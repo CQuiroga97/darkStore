@@ -50,6 +50,7 @@ export class BrandController {
         { body }: Request,
         res: Response,
     ): Promise<Response<ApiResponse<Brand>>> => {
+        console.log('body', body);
         const brand = CreateBrandMapper(body);
         try {
             await validateOrReject(brand);

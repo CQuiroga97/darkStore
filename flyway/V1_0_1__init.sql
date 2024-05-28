@@ -40,7 +40,7 @@ CREATE TABLE public.marcas (
 	id_marca bigserial NOT NULL,
 	nombre varchar(255) NOT NULL,
 	direccion varchar(255) NULL,
-	telefono int4 NULL,
+	telefono varchar(255) NULL,
 	correo int4 NOT NULL,
 	activo bool DEFAULT true NOT NULL,
 	CONSTRAINT marcas_pkey PRIMARY KEY (id_marca)

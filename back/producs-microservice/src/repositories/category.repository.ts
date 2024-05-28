@@ -11,4 +11,8 @@ export class CategoryRepository {
     async findByID(id: number) {
         return this.repository.findOne({ where: { id } });
     }
+
+    async getCategories() {
+        return this.repository.find();
+    }
 }
