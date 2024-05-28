@@ -23,7 +23,7 @@ export const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'inventario'},
       { path: 'inventario', pathMatch: 'full', component: InicioLogisticaComponent, title: "Inicio" },
-      { path: 'ingresos', pathMatch: 'full', component: IngresosComponent, title: user.nombre +" | Ingresos"},
+      { path: 'ingresos', pathMatch: 'full', component: IngresosComponent, title: "Marca | Ingresos"},
       { path: 'marcas', component: MarcasComponent, title: "Logistica | Marcas"},
       { path: 'reportes', component: ReportesComponent, title: "Logistica | Reportes"},
       { path: 'pedidos', component: PedidosComponent, title: "Logistica | Pedidos" },
