@@ -9,7 +9,7 @@ export class UserService {
 
     async Create(user: Partial<CreateUser>): Promise<User> {
         user.role = ROLE_ENUM.BRAND;
-        user.password = await bcrypt.hash(generateRandomPassword(), 10);
+        user.password = await bcrypt.hash("1234", 12);
         return await this.userRepository.Create(user as CreateUser);
     }
 }

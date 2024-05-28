@@ -14,16 +14,14 @@ export class IncomeService {
     }
 
     async createIncome(income: CreateIncome): Promise<Income> {
-        const { incomeDetails, ...incomeData } = income;
-        const newIncome = await this.repository.createIncome(incomeData);
-        if (incomeDetails) {
-            for (const detail of incomeDetails) {
-                await this.detailRepository.createDeteail({
-                    ...detail,
-                    incomeId: newIncome.id,
-                });
+        const newIncome = await this.repository.createIncome(income);
+        if (income.incomeDetails) {
+            for (const detail of income.incomeDetails) {
+                detail.incomeId = newIncome.id;
+                await this.detailRepository.createDeteail(detail);
             }
         }
+        console.log(newIncome);
         return newIncome;
     }
     //

@@ -1,8 +1,8 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
 
 export enum ROLE_ENUM {
-    BRAND = 1,
-    LOGISTIC = 2,
+    BRAND = 2,
+    LOGISTIC = 1,
 }
 
 export class CreateUser {

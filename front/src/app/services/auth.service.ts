@@ -6,7 +6,7 @@ import { UsuarioAuth } from '../models/usuario.auth/usuario.auth';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3004/api/auth';
+  private baseUrl = 'http://localhost:3003/api/auth';
 
 
 

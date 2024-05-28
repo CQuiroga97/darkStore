@@ -6,6 +6,21 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class RequestService {
+  request_pedidos_ingresos(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
+      this.http.get("http://localhost:3000/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      });
+    })
+  }
 
   constructor(private http: HttpClient) {
 
@@ -16,13 +31,13 @@ export class RequestService {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
       this.http.post("http://localhost:3002/api/" + url, data).subscribe({
-        next:(res:any) =>{
-            if(res != undefined || res != null){
-              resolve(res);
-            }else{
-              reject(null);
-            }
-          
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+
 
         }
       });
@@ -36,13 +51,13 @@ export class RequestService {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
       this.http.post("http://localhost:3003/api/" + url, data).subscribe({
-        next:(res:any) =>{
-            if(res != undefined || res != null){
-              resolve(res);
-            }else{
-              reject(null);
-            }
-          
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+
 
         }
       });
@@ -56,13 +71,13 @@ export class RequestService {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
       this.http.post("http://localhost:3005/api/" + url, data).subscribe({
-        next:(res:any) =>{
-            if(res != undefined || res != null){
-              resolve(res);
-            }else{
-              reject(null);
-            }
-          
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+
 
         }
       });
@@ -85,5 +100,64 @@ export class RequestService {
     })
   }
 
+  request_marca(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      this.http.post("http://localhost:3000/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      })
+    })
+  }
+
+  request_ingreso(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      this.http.post("http://localhost:3000/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      })
+    })
+  }
+
+  request_productos(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      this.http.get("http://localhost:3001/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      })
+    })
+  }
+
+  request_getMarca(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      this.http.get("http://localhost:3002/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      })
+    })
+  }
 }
 
