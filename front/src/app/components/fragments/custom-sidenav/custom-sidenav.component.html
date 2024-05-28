@@ -1,5 +1,6 @@
 <div class="sidenav-header">
-  <img [width]="profilePicSize()" [height]="profilePicSize()" src="assets/images/profile_logo.jpg" alt="logo" />
+  <img [width]="profilePicSize()" [height]="profilePicSize()" src="assets/images/profile_logo.jpg" alt="logo" *ngIf="user.nombre!='cristian'"/>
+  <img [width]="profilePicSize()" [height]="profilePicSize()" src="assets/images/profile_logo_dog.webp" alt="logo" *ngIf="user.nombre=='cristian'"/>
   <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
     <h2>{{user.nombre}}</h2>
     <p>Bienvenido</p>
