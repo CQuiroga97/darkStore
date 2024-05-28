@@ -1,5 +1,4 @@
 version: "4.2"
-
 services:
   products:
     container_name: products
@@ -93,11 +92,11 @@ services:
       - /app/node_modules
     networks:
       - darkstore-network
-  pedidosdespachos:
-    container_name: pedidosDespachos
+  income:
+    container_name: income
     restart: unless-stopped
     build:
-      context: ./back/pedidosDespachos
+      context: ./back/income-microservice
       dockerfile: Dockerfile
       target: production
     ports:
@@ -107,11 +106,11 @@ services:
       - flyway
     networks:
       - darkstore-network
-  pedidosdespachos-dev:
-    container_name: pedidosDespachos-dev
+  income-dev:
+    container_name: income-dev
     restart: unless-stopped
     build:
-      context: ./back/pedidosDespachos
+      context: ./back/income-microservice
       dockerfile: Dockerfile
       target: dev
     ports:
@@ -120,38 +119,7 @@ services:
       - dark-store-db
       - flyway
     volumes:
-      - ./back/pedidosDespachos:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
-  inventario:
-    container_name: inventario
-    restart: unless-stopped
-    build:
-      context: ./back/inventario
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4500:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    networks:
-      - darkstore-network
-  inventario-dev:
-    container_name: inventario-dev
-    restart: unless-stopped
-    build:
-      context: ./back/inventario
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4500:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    volumes:
-      - ./back/inventario:/app
+      - ./back/income-microservice:/app
       - /app/node_modules
     networks:
       - darkstore-network
