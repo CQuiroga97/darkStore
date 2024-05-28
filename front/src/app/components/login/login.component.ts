@@ -61,7 +61,6 @@ export class LoginComponent {
         localStorage.setItem('token', data.accessToken);
         localStorage.setItem('usuario', JSON.stringify(data.usuario));
         this.goToInicio(data.usuario);
-
         Swal.fire({
           title: 'Bienvenido',
           text: 'Inicio de sesión exitoso',
