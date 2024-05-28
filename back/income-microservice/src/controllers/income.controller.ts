@@ -25,7 +25,7 @@ export class IncomeController {
         } catch (error) {
             return handleError(error, res);
         }
-    };
+    }
     //
     // Update = async ({ body, params }: Request, res: Response) => {
     //     const income = UpdateIncomeMapper(body);

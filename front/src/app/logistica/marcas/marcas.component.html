@@ -1,0 +1,19 @@
+<form [formGroup]="marcaForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" class="form-control" id="nombre" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="direccion">Dirección:</label>
+    <input type="text" class="form-control" id="direccion" formControlName="address">
+  </div>
+  <div class="form-group">
+    <label for="telefono">Teléfono:</label>
+    <input type="number" class="form-control" id="telefono" formControlName="phone">
+  </div>
+  <div class="form-group">
+    <label for="correo">Correo:</label>
+    <input type="email" class="form-control" id="correo" formControlName="email">
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

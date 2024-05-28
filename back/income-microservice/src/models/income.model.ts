@@ -7,7 +7,6 @@ import {
 import { Type } from 'class-transformer';
 
 export class CreateIncome {
-    @IsDateString()
     incomeDate: string;
 
     @IsString()

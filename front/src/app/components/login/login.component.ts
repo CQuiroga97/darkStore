@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';

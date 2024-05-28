@@ -45,9 +45,8 @@ export class CustomSidenavComponent {
         { icon: 'inventory_2', label: 'Inventario', route: '/darkstore/inventario', activated: false, },
         { icon: 'shelves', label: 'Pedidos', route: '/darkstore/pedidos', activated: false, },
         { icon: 'local_shipping', label: 'Despachos', route: '/darkstore/despachos', activated: false, },
-        { icon: 'storefront', label: 'Tienda', route: '/store', activated: false, },
-        { icon: 'shopping_cart', label: 'Carrito', route: '/store/carrito', activated: false, },
-        { icon: 'content_paste', label: 'Reportes', route: '/darkstore/reportes', activated: false,},
+        { icon: 'content_paste', label: 'Reportes', route: '/darkstore/reportes', activated: false, },
+        { icon: 'person_add', label: 'Marcas', route: '/darkstore/marcas', activated: false, },
         { icon: 'logout', label: 'Cerrar sesión', route: '', onClick: () => this.onClickLogout(), activated: false, }
       ]);
     } else if (this.user.rol == 1) {
@@ -56,12 +55,12 @@ export class CustomSidenavComponent {
         { icon: 'shelves', label: 'Pedidos', route: '/darkstore/pedidos', activated: false, },
         { icon: 'local_shipping', label: 'Despachos', route: '/darkstore/despachos', activated: false, },
         { icon: 'content_paste', label: 'Reportes', route: '/darkstore/reportes', activated: false,},
+        { icon: 'person_add', label: 'Marcas', route: '/darkstore/marcas', activated: false,},
         { icon: 'logout', label: 'Cerrar sesión', route: '', onClick: () => this.onClickLogout(), activated: false, }
       ]);
     } else if (this.user.rol == 2) {
       this.menuItems.set([
-        { icon: 'storefront', label: 'Tienda', route: '/store', activated: false, },
-        { icon: 'shopping_cart', label: 'Carrito', route: '/store/carrito', activated: false, },
+        { icon: 'local_shipping', label: 'Ingresos', route: '/darkstore/ingresos', activated: false, },
         { icon: 'logout', label: 'Cerrar sesión', route: '', onClick: () => this.onClickLogout(), activated: false, }
       ]);
     }
