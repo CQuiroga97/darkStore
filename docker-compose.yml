@@ -1,153 +1,173 @@
 version: "4.2"
 services:
-  products:
-    container_name: products
-    build:
-      context: ./back/producs-microservice
-      dockerfile: Dockerfile
-      target: production
+  inventario:
+    container_name: inventario
+    image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
     ports:
-      - "4000:3000"
+      - "3000:3000"
     depends_on:
       - dark-store-db
       - flyway
     networks:
       - darkstore-network
-  products-dev:
-    container_name: products-dev
-    restart: unless-stopped
-    build:
-      context: ./back/producs-microservice
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4000:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    volumes:
-      - ./back/producs-microservice:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
-  brands:
-    container_name: brands
-    restart: unless-stopped
-    build:
-      context: ./back/brands-microservice
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4100:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    networks:
-      - darkstore-network
-  brands-dev:
-    container_name: brands-dev
-    restart: unless-stopped
-    build:
-      context: ./back/brands-microservice
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4100:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    volumes:
-      - ./back/brands-microservice:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
-  reports:
-    container_name: reports
-    restart: unless-stopped
-    build:
-      context: ./back/reports-microservice
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4300:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    networks:
-      - darkstore-network
-  reports-dev:
-    container_name: reports-dev
-    restart: unless-stopped
-    build:
-      context: ./back/reports-microservice
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4300:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    volumes:
-      - ./back/reports-microservice:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
-  income:
-    container_name: income
-    restart: unless-stopped
-    build:
-      context: ./back/income-microservice
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4400:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    networks:
-      - darkstore-network
-  income-dev:
-    container_name: income-dev
-    restart: unless-stopped
-    build:
-      context: ./back/income-microservice
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4400:3000"
-    depends_on:
-      - dark-store-db
-      - flyway
-    volumes:
-      - ./back/income-microservice:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
-  front:
-    container_name: front
-    restart: unless-stopped
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4600:3000"
-    networks:
-      - darkstore-network
-  front-dev:
-    container_name: front-dev
-    restart: unless-stopped
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-      target: dev
-    ports:
-      - "4600:3000"
-    volumes:
-      - ./front:/app
-      - /app/node_modules
-    networks:
-      - darkstore-network
+  # products:
+  #   container_name: products
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   build:
+  #     context: ./back/producs-microservice
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "4000:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   networks:
+  #     - darkstore-network
+  # products-dev:
+  #   container_name: products-dev
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/producs-microservice
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   ports:
+  #     - "4000:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   volumes:
+  #     - ./back/producs-microservice:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - darkstore-network
+  # brands:
+  #   container_name: brands
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/brands-microservice
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "4100:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   networks:
+  #     - darkstore-network
+  # brands-dev:
+  #   container_name: brands-dev
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/brands-microservice
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   ports:
+  #     - "4100:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   volumes:
+  #     - ./back/brands-microservice:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - darkstore-network
+  # reports:
+  #   container_name: reports
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/reports-microservice
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "4300:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   networks:
+  #     - darkstore-network
+  # reports-dev:
+  #   container_name: reports-dev
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/reports-microservice
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   ports:
+  #     - "4300:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   volumes:
+  #     - ./back/reports-microservice:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - darkstore-network
+  # income:
+  #   container_name: income
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/income-microservice
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "4400:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   networks:
+  #     - darkstore-network
+  # income-dev:
+  #   container_name: income-dev
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./back/income-microservice
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   ports:
+  #     - "4400:3000"
+  #   depends_on:
+  #     - dark-store-db
+  #     - flyway
+  #   volumes:
+  #     - ./back/income-microservice:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - darkstore-network
+  # front:
+  #   container_name: front
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "4600:3000"
+  #   networks:
+  #     - darkstore-network
+  # front-dev:
+  #   container_name: front-dev
+  #   image: 654654383573.dkr.ecr.us-east-1.amazonaws.com/darkstore-repo
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   ports:
+  #     - "4600:3000"
+  #   volumes:
+  #     - ./front:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - darkstore-network
   dark-store-db:
     image: postgres:12
     environment:
@@ -167,7 +187,7 @@ services:
       - ./flyway/:/flyway/sql
     depends_on:
       - dark-store-db
-    command: -url=jdbc:postgresql://dark-store-db:5432/darkstore -user=darkstore -password=darkstore -locations=filesystem:/flyway/sql -validateMigrationNaming=true migrate
+    command: -url=jdbc:postgresql://darkstore-db.czyqgkyssdoq.us-east-1.rds.amazonaws.com:5432/darkstore -user=darkstore -password=darkstore -locations=filesystem:/flyway/sql -validateMigrationNaming=true migrate
     networks:
       - darkstore-network
 

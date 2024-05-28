@@ -1,66 +1,20 @@
+# Establecer la imagen base
 FROM node:18-alpine as base
 
-ENV DIR /app
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-WORKDIR $DIR
+# Copiar los archivos de configuración del proyecto (package.json y package-lock.json)
+COPY package*.json ./
 
-# ===== DEVELOPMENT =====
-FROM base AS dev
-RUN echo "Running the app in development mode"
-ARG NPM_TOKEN
+# Instalar las dependencias del proyecto
+RUN npm install --only=production
 
-ENV NODE_ENV=development
+# Copiar el resto de los archivos del proyecto desde la raíz
+COPY . .
 
-COPY package*.json $DIR
-
-# esto es para evitar problemas con el token de npm
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
-    npm ci && \
-    rm -f .npmrc
-
-COPY package*.json $DIR
-
-RUN npm ci
-
-COPY tsconfig*.json $DIR
-COPY src $DIR/src
-
+# Exponer el puerto en el que la aplicación se ejecuta
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
 
-
-# ===== BUILD =====
-FROM base AS build
-RUN echo "Building the app"
-ARG NPM_TOKEN
-
-RUN apk update && apk add --no-cache dumb-init # esto es para evitar problemas entre node y docker
-
-
-COPY package*.json $DIR
-
-# esto es para evitar problemas con el token de npm
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
-    npm ci && \
-    rm -f .npmrc
-
-COPY tsconfig*.json $DIR
-COPY src $DIR/src
-
-RUN npm run build && \
-    npm prune --production
-
-# ===== PRODUCTION =====
-FROM base AS production
-RUN echo "Running the app in production mode"
-ENV USER node
-
-COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
-COPY --from=build $DIR/node_modules $DIR/node_modules
-COPY --from=build $DIR/build $DIR/build
-
-ENV NODE_ENV=production
-
-EXPOSE 3000
-USER $USER
-CMD ["dumb-init","node", "build/app.js"]
+# Comando para iniciar la aplicación en modo de producción
+CMD ["node", "index.js"]
