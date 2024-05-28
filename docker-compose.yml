@@ -93,6 +93,37 @@ services:
       - /app/node_modules
     networks:
       - darkstore-network
+  login: 
+    container_name: login
+    restart: unless-stopped
+    build:
+      context: ./back/login
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
+  login-dev:
+    container_name: login-dev
+    restart: unless-stopped
+    build:
+      context: ./back/login
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4400:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    volumes:
+      - ./back/login:/app
+      - /app/node_modules
+    networks:
+      - darkstore-network
   front:
     container_name: front
     restart: unless-stopped

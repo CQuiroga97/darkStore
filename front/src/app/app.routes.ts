@@ -7,12 +7,21 @@ import { PedidosComponent } from './logistica/pedidos/pedidos.component';
 import { DespachosComponent } from './logistica/despachos/despachos.component';
 
 import { SidenavComponent } from './components/fragments/sidenav/sidenav.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent, canActivate: [authGuard]},
-  { path: 'darkstore/inventario', component: InicioLogisticaComponent, title: "Logistica | Inventario"},
-  { path: 'darkstore/pedidos', component: PedidosComponent, title: "Logistica | Pedidos"},
-  { path: 'darkstore/despachos', component: DespachosComponent, title: "Logistica | Despachos"},
+  { path: 'inicio', component: InicioComponent, canActivate: [authGuard] },
+  {
+    path: 'darkstore', component: SidenavComponent, canActivate: [authGuard],
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'inventario'},
+      { path: 'inventario', pathMatch: 'full', component: InicioLogisticaComponent, title: "Logistica | Inventario" },
+      { path: 'reportes', component: ReportesComponent, title: "Logistica | Reportes"},
+      { path: 'pedidos', component: PedidosComponent, title: "Logistica | Pedidos" },
+      { path: 'despachos', component: DespachosComponent, title: "Logistica | Despachos" }
+    ]
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 ];
+

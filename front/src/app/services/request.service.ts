@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 // import { enviroment } from '../components';
 
 @Injectable({
@@ -7,22 +7,22 @@ import {HttpClient} from '@angular/common/http'
 })
 export class RequestService {
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
 
   }
 
-  request(url:string,data:any) {
-    return new Promise((resolve, reject)=>{
+  request(url: string, data: any) {
+    return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
       this.http.post("http://localhost:3001/api/" + url, data).subscribe({
-        next:(res:any) =>{
-            if(res != undefined || res != null){
-              resolve(res);
-            }else{
-              reject(null);
-            }
-          
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+
 
         }
       });
@@ -31,24 +31,37 @@ export class RequestService {
     // return this.http.post("http://backend_container:3000/api/"+ url, data);
 
   }
-  request_pedidos_despachos(url:string,data:any) {
-    return new Promise((resolve, reject)=>{
+  request_pedidos_despachos(url: string, data: any) {
+    return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3000/api/" + url, data).subscribe({
-        next:(res:any) =>{
-            if(res != undefined || res != null){
-              resolve(res);
-            }else{
-              reject(null);
-            }
-          
-
+      this.http.post("http://localhost:3002/api/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
         }
       });
     })
 
     // return this.http.post("http://backend_container:3000/api/"+ url, data);
-
   }
+  request_reportes(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      this.http.get("http://localhost:4300/" + url, data).subscribe({
+        next: (res: any) => {
+          if (res != undefined || res != null) {
+            resolve(res);
+          } else {
+            reject(null);
+          }
+        }
+      })
+    })
+  }
+
 }
+

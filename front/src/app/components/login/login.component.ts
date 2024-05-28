@@ -18,48 +18,49 @@ import { UsuarioAuth } from '../../models/usuario.auth/usuario.auth';
 export class LoginComponent {
   auth: UsuarioAuth = new UsuarioAuth();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   loginForm = this.formBuilder.group({
     correo: ['', [Validators.required, Validators.email]],
     clave: ['', Validators.required]
   });
 
-onSubmit() {
+  onSubmit() {
 
-  const correo = this.loginForm.get('correo')?.value as string;
-  const clave = this.loginForm.get('clave')?.value as string;
+    const correo = this.loginForm.get('correo')?.value as string;
+    const clave = this.loginForm.get('clave')?.value as string;
 
-  this.auth  = {
-    correo: correo,
-    clave: clave
-  };
+    this.auth = {
+      correo: correo,
+      clave: clave
+    };
 
-  if(this.loginForm.invalid){
-    Swal.fire({
-      icon: 'warning',
-      toast: true,
-      position: "top-end",
-      text: 'Todos los campos son obligatorios',
-      showCancelButton: false,
-      showConfirmButton: false,
-      timer: 1500,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      }
-    });
-    return;
-  } else{
-    this.authenticate();
+    if (this.loginForm.invalid) {
+      Swal.fire({
+        icon: 'warning',
+        toast: true,
+        position: "top-end",
+        text: 'Todos los campos son obligatorios',
+        showCancelButton: false,
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      return;
+    } else {
+      this.authenticate();
+    }
   }
-}
   authenticate() {
     this.authService.authenticate(this.auth).subscribe({
       next: (data) => {
         localStorage.setItem('token', data.accessToken);
-        this.goToInicio(data.rol);
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+        this.goToInicio(data.usuario);
 
         Swal.fire({
           title: 'Bienvenido',
@@ -81,14 +82,8 @@ onSubmit() {
       },
     });
   }
-  goToInicio(rol: any) {
-    if (rol.equals(0)) {
-      this.router.navigate(['/admin']);
-    } else if (rol.equals(1)) {
-      this.router.navigate(['/usuario']);
-    } else if (rol.equals(2)) {
-      this.router.navigate(['/marca']);
-    }
+  goToInicio(usuario: any) {
+    this.router.navigate(['/darkstore']);
   }
 
 }

@@ -6,3 +6,19 @@ app-almacenar-inventario{
     background-position:50px center ;
     background-size: auto 90%;
 }
+
+mat-tab-group{
+    width: 100%;
+    height: 100%;
+    background-color: var(--snow);
+
+
+    > mat-tab {
+        background-color: var(--polynesian-blue);
+        color: var(--snow);
+        > div.mat-tab-label-content {
+            color: var(--snow);
+        }
+    }
+}
+
