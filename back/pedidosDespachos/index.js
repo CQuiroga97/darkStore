@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({limit: '1050mb', extended: true}));
 app.use("/api", indexRouter);
 
 
-httpServer.listen(port, '0.0.0.0', ()=>{
+httpServer.listen(3004, '172.26.14.23', ()=>{
     console.log(port)
     console.log("Servidor iniciado.")
 })

@@ -17,6 +17,6 @@ app.use("/api", indexRouter);
 app.use("/api", loginRouter);
 
 
-httpServer.listen(port, '0.0.0.0', ()=>{
+httpServer.listen(3003, '172.26.14.23', ()=>{
     console.log("Servidor iniciado.")
 })

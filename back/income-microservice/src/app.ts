@@ -23,4 +23,5 @@ if (DATABASE_TYPE === 'postgres') {
             console.error('Error connecting to Postgres', error);
         });
 }
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+const HOSTNAME = "172.26.14.23";
+app.listen(3001, HOSTNAME, () => console.log(`Server is running on port ${PORT}`));
