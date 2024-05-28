@@ -15,7 +15,7 @@ export class RequestService {
     return new Promise((resolve, reject)=>{
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3001/api/" + url, data).subscribe({
+      this.http.post("http://localhost:3002/api/" + url, data).subscribe({
         next:(res:any) =>{
             if(res != undefined || res != null){
               resolve(res);
@@ -35,7 +35,7 @@ export class RequestService {
     return new Promise((resolve, reject)=>{
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3000/api/" + url, data).subscribe({
+      this.http.post("http://localhost:3005/api/" + url, data).subscribe({
         next:(res:any) =>{
             if(res != undefined || res != null){
               resolve(res);
