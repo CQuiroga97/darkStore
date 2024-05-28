@@ -5,7 +5,7 @@
   </div>
   <div class="row">
     <div class="col-12 d-flex ">
-      <img src="../../../../assets/images/marca/ingresos/img1.png" alt="" *ngIf="dataSource._data?._value.length == 0 and user.nombre!=='cristian'" class="m-auto">
+      <img src="../../../../assets/images/marca/ingresos/img1.png" alt="" *ngIf="dataSource._data?._value.length == 0 " class="m-auto">
 
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table m-auto" *ngIf="dataSource._data?._value.length > 0"
         matSort
