@@ -14,15 +14,14 @@ export const CreateIncomeMapper = (body: any): CreateIncome => {
     return income;
 };
 
-// export const UpdateProductMapper = (body: any): Partial<CreateProduct> => {
-//     if (!body) throw new Error('Body is required');
-//     if (typeof body !== 'object') throw new Error('Body must be an object');
-//
-//     const { reference, description, brandId, categoryId } = body;
-//     const product: Partial<CreateProduct> = {};
-//     if (reference) product.reference = reference;
-//     if (description) product.description = description;
-//     if (brandId) product.brandId = brandId;
-//     if (categoryId) product.categoryId = categoryId;
-//     return product;
-// };
+export const UpdateIncomeMapper = (body: any): Partial<CreateIncome> => {
+    if (!body) throw new Error('Body is required');
+    if (typeof body !== 'object') throw new Error('Body must be an object');
+
+    const { incomeDate, incomeCode, brandId } = body;
+    const income: Partial<CreateIncome> = {};
+    if (incomeDate) income.incomeDate = incomeDate;
+    if (incomeCode) income.incomeCode = incomeCode;
+    if (brandId) income.brandId = brandId;
+    return income;
+};

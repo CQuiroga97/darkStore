@@ -9,14 +9,7 @@ export class IncomeDetailRepository {
     }
 
     async createDeteail(detail: CreateIncomeDetail): Promise<IncomeDetail> {
+        console.log('detail---->', detail);
         return this.repository.save(detail);
     }
-
-    // async updateIncome(
-    //     product: Partial<CreateIncome> & { id: number },
-    // ): Promise<Income> {
-    //     if ((await this.findByID(product.id)) === null)
-    //         throw new Error(ERROR.RESOURCE_NOT_FOUND.replace('%s', 'Income'));
-    //     return this.repository.save(product);
-    // }
 }

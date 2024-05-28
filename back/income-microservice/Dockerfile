@@ -14,7 +14,7 @@ ENV NODE_ENV=development
 COPY package*.json $DIR
 
 # esto es para evitar problemas con el token de npm
-RUN  npm ci
+RUN  npm i
 
 
 COPY package*.json $DIR

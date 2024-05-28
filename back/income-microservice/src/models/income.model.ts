@@ -3,6 +3,8 @@ import {
     IsNumber,
     IsDateString,
     ValidateNested,
+    IsArray,
+    ArrayNotEmpty,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -16,7 +18,9 @@ export class CreateIncome {
     @IsNumber()
     brandId: number;
 
-    @ValidateNested()
+    @IsArray()
+    @ArrayNotEmpty()
+    @ValidateNested({ each: true })
     @Type(() => CreateIncomeDetail)
     incomeDetails?: CreateIncomeDetail[];
 }
@@ -29,4 +33,6 @@ export class CreateIncomeDetail {
     quantity: number;
 
     incomeId?: number;
+
+    incomeDate?: string;
 }

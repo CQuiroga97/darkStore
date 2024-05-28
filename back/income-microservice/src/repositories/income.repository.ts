@@ -1,6 +1,7 @@
 import { DataSource, Repository } from 'typeorm';
 import { Income } from '../entities/income.entity';
 import { CreateIncome } from '../models/income.model';
+import { ERROR } from '../utilities/messages.utilities';
 
 export class IncomeRepository {
     private repository: Repository<Income>;
@@ -20,11 +21,11 @@ export class IncomeRepository {
         return this.repository.save(product);
     }
 
-    // async updateIncome(
-    //     product: Partial<CreateIncome> & { id: number },
-    // ): Promise<Income> {
-    //     if ((await this.findByID(product.id)) === null)
-    //         throw new Error(ERROR.RESOURCE_NOT_FOUND.replace('%s', 'Income'));
-    //     return this.repository.save(product);
-    // }
+    async updateIncome(
+        product: Partial<CreateIncome> & { id: number },
+    ): Promise<Income> {
+        if ((await this.findByID(product.id)) === null)
+            throw new Error(ERROR.RESOURCE_NOT_FOUND.replace('%s', 'Income'));
+        return this.repository.save(product);
+    }
 }

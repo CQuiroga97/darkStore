@@ -27,7 +27,6 @@ services:
       - flyway
     volumes:
       - ./back/producs-microservice:/app
-      - /app/node_modules
     networks:
       - darkstore-network
   brands:
@@ -89,7 +88,6 @@ services:
       - flyway
     volumes:
       - ./back/reports-microservice:/app
-      - /app/node_modules
     networks:
       - darkstore-network
   income:
@@ -120,32 +118,17 @@ services:
       - flyway
     volumes:
       - ./back/income-microservice:/app
-      - /app/node_modules
     networks:
       - darkstore-network
-  front:
-    container_name: front
-    restart: unless-stopped
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-      target: production
-    ports:
-      - "4200:3000"
-    networks:
-      - darkstore-network
+
   front-dev:
-    container_name: front-dev
-    restart: unless-stopped
     build:
-      context: ./front
+      context: ./front/
       dockerfile: Dockerfile
-      target: dev
     ports:
-      - "4200:3000"
+      - "4200:80"
     volumes:
-      - ./front:/app
-      - /app/node_modules
+      - ./dist:/usr/share/nginx/html
     networks:
       - darkstore-network
   dark-store-db:
