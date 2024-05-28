@@ -31,6 +31,26 @@ export class RequestService {
     // return this.http.post("http://backend_container:3000/api/"+ url, data);
 
   }
+  requestLogin(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+
+      // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
+      this.http.post("http://localhost:3003/api/" + url, data).subscribe({
+        next:(res:any) =>{
+            if(res != undefined || res != null){
+              resolve(res);
+            }else{
+              reject(null);
+            }
+          
+
+        }
+      });
+    })
+
+    // return this.http.post("http://backend_container:3000/api/"+ url, data);
+
+  }
   request_pedidos_despachos(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
