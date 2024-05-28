@@ -18,6 +18,7 @@ export class IncomeRepository {
         return this.repository.find({
             where,
             order: { incomeDate: 'ASC' },
+            relations: ['brand', 'incomeDetails', 'incomeDetails.product'],
         });
     }
 }

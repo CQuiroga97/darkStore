@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm';
+import { DataSource, In } from 'typeorm';
 import 'dotenv/config';
 import { Product } from '../entities/product.entity';
 import { Brand } from '../entities/brand.entity';
@@ -7,6 +7,8 @@ import { IncomeDetail } from '../entities/details-income.entity';
 import { Income } from '../entities/income.entity';
 import { Dispatch } from '../entities/dispatch.entity';
 import { Category } from '../entities/category.entity';
+import { Inventory } from '../entities/inventory.entity';
+import { InventoryProduct } from '../entities/inventory-product.entity';
 
 export const postgresConfig = new DataSource({
     type: 'postgres',
@@ -24,6 +26,8 @@ export const postgresConfig = new DataSource({
         Income,
         Dispatch,
         Category,
+        Inventory,
+        InventoryProduct,
     ],
     logging: true,
     synchronize: false,

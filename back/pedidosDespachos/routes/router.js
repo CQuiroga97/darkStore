@@ -11,6 +11,7 @@ const DespachosRepository = dependencyContainer.getRepository('DespachosReposito
 const PedidosDetallesRepository = dependencyContainer.getRepository('PedidosDetallesRepository');
 
 router.post("/getPedidos", async (req, res)=>{
+    console.log("asd")
     const pedidos = await PedidosRepository.findAll(req.body.estado);
     res.status(200).json(pedidos)
 })

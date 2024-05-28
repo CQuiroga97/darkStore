@@ -4,16 +4,13 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-    OneToMany,
 } from 'typeorm';
 import { Brand } from './brand.entity';
 import { Category } from './category.entity';
-import { Income } from './income.entity';
 import { IncomeDetail } from './details-income.entity';
-import { DispatchDetail } from './details-dispatch.entity';
-import { InventoryProduct } from './inventory-product.entity';
 
 @Entity('productos')
 export class Product {
@@ -39,11 +36,11 @@ export class Product {
     updatedAt: Date;
 
     //relationships
-    @ManyToOne(() => Brand, (brand: Brand) => brand.products)
+    @ManyToOne(() => Brand, (brand) => brand.products)
     @JoinColumn({ name: 'marca_id' })
     brand: Brand;
 
-    @ManyToOne(() => Category, (category: Category) => category.products)
+    @ManyToOne(() => Category, (category) => category.products)
     @JoinColumn({ name: 'categoria_producto_id' })
     category: Category;
 
@@ -51,17 +48,5 @@ export class Product {
         () => IncomeDetail,
         (incomeDetail: IncomeDetail) => incomeDetail.product,
     )
-    incomeDetails: Income[];
-
-    @OneToMany(
-        () => DispatchDetail,
-        (dispatchDetail: DispatchDetail) => dispatchDetail.product,
-    )
-    dispatchDetails: DispatchDetail[];
-
-    @OneToMany(
-        () => InventoryProduct,
-        (inventoryProduct: InventoryProduct) => inventoryProduct.product,
-    )
-    inventoryProducts: InventoryProduct[];
+    incomeDetails: IncomeDetail[];
 }
