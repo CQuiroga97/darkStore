@@ -10,7 +10,7 @@ export class RequestService {
     return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.get("http://localhost:3000/" + url, data).subscribe({
+      this.http.get("http://44.194.25.204:3004/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -30,7 +30,7 @@ export class RequestService {
     return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3002/api/" + url, data).subscribe({
+      this.http.post("http://44.194.25.204:3002/api/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -50,7 +50,7 @@ export class RequestService {
     return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3003/api/" + url, data).subscribe({
+      this.http.post("http://44.194.25.204:3003/api/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -70,7 +70,7 @@ export class RequestService {
     return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.post("http://localhost:3005/api/" + url, data).subscribe({
+      this.http.post("http://44.194.25.204:3004/api/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -88,7 +88,7 @@ export class RequestService {
   request_reportes(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
-      this.http.get("http://localhost:4300/" + url, data).subscribe({
+      this.http.get("http://100.27.170.95:3006/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -103,7 +103,7 @@ export class RequestService {
   request_marca(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
-      this.http.post("http://localhost:3000/" + url, data).subscribe({
+      this.http.post("http://100.27.170.95:3000/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -118,7 +118,7 @@ export class RequestService {
   request_ingreso(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
-      this.http.post("http://localhost:3000/" + url, data).subscribe({
+      this.http.post("http://100.27.170.95:3001/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -133,7 +133,7 @@ export class RequestService {
   request_productos(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
-      this.http.get("http://localhost:3001/" + url, data).subscribe({
+      this.http.get("http://100.27.170.95:3005/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
@@ -148,7 +148,7 @@ export class RequestService {
   request_getMarca(url: string, data: any) {
     return new Promise((resolve, reject) => {
 
-      this.http.get("http://localhost:3002/" + url, data).subscribe({
+      this.http.get("http://100.27.170.95:3000/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);
