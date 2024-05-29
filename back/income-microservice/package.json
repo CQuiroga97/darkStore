@@ -5,7 +5,7 @@
     "main": "app.ts",
     "scripts": {
         "dev": "nodemon --exec ts-node-dev src/app.ts",
-        "start": "node build/app.js",
+        "start": "nodemon --exec ts-node-dev src/app.ts",
         "build": "tsc --build",
         "test": "jest --watchAll --passWithNoTests"
     },

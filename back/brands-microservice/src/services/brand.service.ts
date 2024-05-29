@@ -6,6 +6,9 @@ import { BrandRepository } from '../repositories/brand.repository';
 import { UserService } from './user.service';
 
 export class BrandService {
+    async GetByEmail(email: string) {
+        return await this.brandRepository.GetByEmail(email);
+    }
     constructor(
         private brandRepository: BrandRepository,
         private userService: UserService,

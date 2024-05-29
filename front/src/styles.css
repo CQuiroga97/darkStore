@@ -1,14 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 @font-face {
   font-family: 'Noto Sans';
   src: url('/assets/fonts/NotoSans-Regular.ttf');
 }
-* {
-  font-family: 'Noto Sans'!important
-}
-:root{
 
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+:root {
   --polynesian-blue: #024889ff;
   --battleship-gray: #8a8a8aff;
   --snow: #faf6f6ff;
@@ -16,21 +17,12 @@
   --falu-red: #771313ff;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Noto Sans'; font-size: 16px; color: #333; }
-app-root{
-  display: flex;
-  min-height: 100%;
+body{
+  margin: 0;
+  background-color: white
 }
-.mat-mdc-outlined-button:not(:disabled){
-  color: var(--battleship-gray) !important;
-}
-.mat-mdc-outlined-button{
-  border-color: var(--falu-red) !important;
-}
-.mat-mdc-tab .mdc-tab__text-label{
-  color: var(--battleship-gray) !important;
-}
-.material-icons{
-  font-family: 'Material Icons' !important;
+
+
+html,body {
+  height: 100%;
 }

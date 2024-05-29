@@ -24,7 +24,8 @@ const authService = {
     const accessToken = generateAccessToken(usuario);
     res.header('authorization', accessToken).json({
         message: 'Usuario autenticado',
-        accessToken: accessToken
+        accessToken: accessToken,
+        usuario: usuario[0]
     });
     },
 

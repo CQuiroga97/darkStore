@@ -26,6 +26,7 @@ export class IncomeService {
                 });
             }
         }
+        console.log(newIncome);
         return newIncome;
     }
 

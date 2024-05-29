@@ -6,12 +6,30 @@ import { InicioLogisticaComponent } from './logistica/inicio-logistica/inicio-lo
 import { PedidosComponent } from './logistica/pedidos/pedidos.component';
 import { DespachosComponent } from './logistica/despachos/despachos.component';
 
+import { SidenavComponent } from './components/fragments/sidenav/sidenav.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { MarcasComponent } from './logistica/marcas/marcas.component';
+import { IngresosComponent } from './marca/ingresos/ingresos.component';
+import { Usuario } from './models/usuario/usuario';
+
+let user: Usuario = new Usuario();
+user = JSON.parse(localStorage.getItem('usuario') as string);
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent, canActivate: [authGuard]},
-  { path: 'darkstore/inventario', component: InicioLogisticaComponent, title: "Logistica | Inventario"},
-  { path: 'darkstore/pedidos', component: PedidosComponent, title: "Logistica | Pedidos"},
-  { path: 'darkstore/despachos', component: DespachosComponent, title: "Logistica | Despachos"},
+  { path: 'inicio', component: InicioComponent, canActivate: [authGuard] },
+  {
+    path: 'darkstore', component: SidenavComponent, canActivate: [authGuard],
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'inventario'},
+      { path: 'inventario', pathMatch: 'full', component: InicioLogisticaComponent, title: "Inicio" },
+      { path: 'ingresos', pathMatch: 'full', component: IngresosComponent, title: "Marca | Ingresos"},
+      { path: 'marcas', component: MarcasComponent, title: "Logistica | Marcas"},
+      { path: 'reportes', component: ReportesComponent, title: "Logistica | Reportes"},
+      { path: 'pedidos', component: PedidosComponent, title: "Logistica | Pedidos" },
+      { path: 'despachos', component: DespachosComponent, title: "Logistica | Despachos" }
+    ]
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 ];
+

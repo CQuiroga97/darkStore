@@ -4,6 +4,9 @@ import { CreateBrand, GetBrand } from '../models/brand.model';
 import { ERROR } from '../utilities/messages.utilities';
 
 export class BrandRepository {
+    GetByEmail(email: string) {
+        return this.repository.findOne({ where: { email } });
+    }
     private readonly repository: Repository<Brand>;
 
     constructor(dataSource: DataSource) {

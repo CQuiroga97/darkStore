@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port 3000",
+    "start": "ng serve --host 172.26.14.23 --port 4200",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -39,6 +39,7 @@
     "@angular/cli": "^17.1.0",
     "@angular/compiler-cli": "^17.1.0",
     "@angular/localize": "^17.0.0",
+    "@types/babel__core": "^7.20.5",
     "@types/jasmine": "~5.1.0",
     "@types/jquery": "^3.5.9",
     "jasmine-core": "~5.1.0",

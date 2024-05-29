@@ -12,6 +12,22 @@ import { ApiResponse } from '../models/general.model';
 import { handleError } from '../utilities/error.utilities';
 
 export class BrandController {
+    GetByEmail = async (
+        { query }: Request,
+        res: Response,
+    ): Promise<Response<ApiResponse<Brand>>> => {
+        try {
+            const brand = await this.brandService.GetByEmail(
+                query.email as string,
+            );
+            return res.status(200).json({
+                message: SUCCESS.SUCCESS,
+                data: brand,
+            });
+        } catch (error: any) {
+            return handleError(error, res);
+        }
+    }
     constructor(private brandService: BrandService) {}
 
     Get = async (
