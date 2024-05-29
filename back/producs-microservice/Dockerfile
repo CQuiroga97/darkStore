@@ -42,7 +42,7 @@ RUN npm run build && \
     npm prune --production
 
 # ===== PRODUCTION =====
-FROM base AS production
+FROM build AS production
 RUN echo "Running the app in production mode"
 ENV USER node
 
