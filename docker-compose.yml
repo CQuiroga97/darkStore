@@ -22,6 +22,8 @@ services:
     depends_on:
       - dark-store-db
       - flyway
+    env_file:
+      - .env
     networks:
       - darkstore-network
   products-dev:
