@@ -1,5 +1,5 @@
-<mat-tab-group>
-    <mat-tab label="Consultar"> 
+<mat-tab-group *ngIf="user.rol!=2">
+    <mat-tab label="Consultar">
         <app-consultar></app-consultar>
     </mat-tab>
     <mat-tab label="Añadir">
