@@ -16,6 +16,7 @@ const controller = new BrandController(service);
 
 brandRouter.post(`${BASE_PATH}`, controller.Create);
 brandRouter.get(`${BASE_PATH}`, controller.Get);
+brandRouter.get(`/getBrand`, controller.GetByEmail);
 brandRouter.put(`${BASE_PATH}/:id`, controller.Update);
 //
 export { brandRouter };
