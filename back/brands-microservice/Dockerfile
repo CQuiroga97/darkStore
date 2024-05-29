@@ -14,9 +14,7 @@ ENV NODE_ENV=development
 COPY package*.json $DIR
 
 # esto es para evitar problemas con el token de npm
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
-    npm ci && \
-    rm -f .npmrc
+RUN npm ci
 
 COPY package*.json $DIR
 
@@ -38,9 +36,7 @@ RUN apk update && apk add --no-cache dumb-init # esto es para evitar problemas e
 COPY package*.json $DIR
 
 # esto es para evitar problemas con el token de npm
-RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc && \
-    npm ci && \
-    rm -f .npmrc
+RUN npm ci 
 
 COPY tsconfig*.json $DIR
 COPY src $DIR/src
