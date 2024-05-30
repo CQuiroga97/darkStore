@@ -39,20 +39,19 @@ export class Product {
     updatedAt: Date;
 
     //relationships
-    // @ManyToOne(() => Brand, (brand: Brand) => brand.products)
-    // @JoinColumn({ name: 'marca_id' })
-    // brand: Brand;
+    @ManyToOne(() => Brand, (brand: Brand) => brand.products)
+    @JoinColumn({ name: 'marca_id' })
+    brand: Brand;
 
     @ManyToOne(() => Category, (category: Category) => category.products)
     @JoinColumn({ name: 'categoria_producto_id' })
     category: Category;
 
-    // @OneToMany(
-    //     () => IncomeDetail,
-    //     (incomeDetail: IncomeDetail) => incomeDetail.product,
-    // )
-    // @JoinColumn({ name: 'producto_id' })
-    // incomeDetails: IncomeDetail[];
+    @OneToMany(
+        () => IncomeDetail,
+        (incomeDetail: IncomeDetail) => incomeDetail.product,
+    )
+    incomeDetails: IncomeDetail[];
 
     @OneToMany(
         () => DispatchDetail,
