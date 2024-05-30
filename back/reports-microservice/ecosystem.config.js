@@ -3,7 +3,7 @@ module.exports = {
       {
         name: 'app',
         script: 'src/app.ts',
-        interpreter: 'ts-node',
+        interpreter: 'bun',
         env: {
           NODE_ENV: 'development'
         },
