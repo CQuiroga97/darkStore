@@ -23,4 +23,4 @@ if (DATABASE_TYPE === 'postgres') {
             console.error('Error connecting to Postgres', error);
         });
 }
-app.listen(3005, () => console.log(`Server is running on port ${PORT}`));
+app.listen(3000, () => console.log(`Server is running on port ${PORT}`));
