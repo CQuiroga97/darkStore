@@ -187,7 +187,6 @@ CREATE TABLE public.detalles_despachos (
 
 CREATE TABLE public.detalles_ingresos (
 	id_detalle_ingreso bigserial NOT NULL,
-	fecha_ingreso date NOT NULL,
 	ingreso_id int8 NULL,
 	producto_id int8 NULL,
 	cantidad int4 DEFAULT 0 NOT NULL,
