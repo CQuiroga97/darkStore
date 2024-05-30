@@ -22,11 +22,11 @@ export class IncomeDetail {
     @Column({ name: 'cantidad' })
     quantity: number;
 
-    @ManyToOne(() => Product, (product: Product) => product.incomeDetails)
+    @ManyToOne(() => Product, (product: Product) => product.incomeDetails, { nullable: true })
     @JoinColumn({ name: 'producto_id' })
     product?: Product;
 
-    @ManyToOne(() => Income, (income: Income) => income.incomeDetails)
+    @ManyToOne(() => Income, (income: Income) => income.incomeDetails, { nullable: true })
     @JoinColumn({ name: 'ingreso_id' })
     income?: Income;
 }
