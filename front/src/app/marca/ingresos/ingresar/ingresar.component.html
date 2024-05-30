@@ -1,24 +1,46 @@
-<form [formGroup]="ingresoForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="fecha">Fecha ingreso:</label>
-    <input type="date" class="form-control" id="fecha" formControlName="incomeDate">
+<form [formGroup]="ingresoForm" (ngSubmit)="onSubmit()" class="p-5 container">
+  <div class="row">
+
+    <div class="form-group col-6">
+      <mat-form-field class="w-100">
+        <mat-label>Fecha de ingreso</mat-label>
+        <input matInput [matDatepicker]="picker"id="fecha" formControlName="incomeDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form-group col-6">
+      <mat-form-field class="example-full-width w-100">
+        <mat-label>Código</mat-label>
+        <input matInput placeholder="Código" id="codigo" formControlName="incomeCode">
+      </mat-form-field>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="codigo">Código:</label>
-    <input type="text" class="form-control" id="codigo" formControlName="incomeCode">
+  <div class="row">
+
+    <div class="form-group col-6">
+      <mat-form-field class="m-auto w-100">
+        <mat-label>Productos</mat-label>
+        <mat-select id="producto" formControlName="productId">
+            <mat-option value="{{null}}">
+                All
+            </mat-option>
+            <mat-option value="{{item.id}}" *ngFor="let item of products">
+                {{item.reference}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+    </div>
+    <div class="form-group col-6">
+      <mat-form-field class="example-full-width w-100">
+        <mat-label>Cantidad</mat-label>
+        <input matInput placeholder="Código" id="cantidad" formControlName="quantity">
+      </mat-form-field>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="producto">Producto:</label>
-    <select class="form-control" id="producto" formControlName="productId">
-      <option value="{{null}}">All</option>
-      <option [value]="item.id" *ngFor="let item of products" >
-        {{item.reference}}
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" class="form-control" id="cantidad" formControlName="quantity">
-  </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button mat-flat-button color="basic" class="w-100" >
+      Guardar
+    </button>
 </form>

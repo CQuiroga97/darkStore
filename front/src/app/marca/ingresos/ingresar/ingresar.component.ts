@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../../../models/usuario/usuario';
 import { RequestService } from '../../../services/request.service';
@@ -7,15 +7,22 @@ import { Producto } from '../../../models/producto/producto';
 import { CommonModule } from '@angular/common';
 import { Ingreso } from '../../../models/ingreso/ingreso';
 import { Marca } from '../../../models/marca/marca';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-ingresar',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  providers: [provideNativeDateAdapter()],
+  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule,MatDatepickerModule, MatDatepickerModule],
   templateUrl: './ingresar.component.html',
   styleUrl: './ingresar.component.css'
 })
-export class IngresarComponent {
+export class IngresarComponent implements OnInit{
   user: Usuario = new Usuario();
   marca: Marca = new Marca();
   products: any = [];
@@ -107,6 +114,7 @@ export class IngresarComponent {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('usuario') as string);
     this.requestService.request_productos('product', {}).then((res: any) => {
+      console.log(res)
       this.products = res.data;
     });
     console.log(this.products);

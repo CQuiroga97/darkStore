@@ -37,7 +37,7 @@ export class VerIngresosComponent {
   }
 
   loadMarcas() {
-    this.requestService.request("brand", {}).then((res: any) => {
+    this.requestService.request_getMarca("brand", {}).then((res: any) => {
       this.marcas = res.data;
     })
   }

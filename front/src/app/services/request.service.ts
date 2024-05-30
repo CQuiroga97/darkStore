@@ -10,7 +10,7 @@ export class RequestService {
     return new Promise((resolve, reject) => {
 
       // this.http.post(enviroment.URL + "api/" + url, {data:data}).subscribe({
-      this.http.get("http://44.194.25.204:3004/" + url, data).subscribe({
+      this.http.get("http://100.27.170.95:3001/" + url, data).subscribe({
         next: (res: any) => {
           if (res != undefined || res != null) {
             resolve(res);

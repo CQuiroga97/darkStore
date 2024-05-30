@@ -28,24 +28,19 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <div class="login100-form-title" style="background-image: url(/assets/images/bg-01.jpg);">
-          <span class="login100-form-title-1">
-            Iniciar Sesión
-          </span>
+        <div class="login100-form-title" >
+          <img src="../../../assets/images/iconDS.png" alt="">
         </div>
 
-        <form class="login100-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="wrap-input100 validate-input m-b-26">
-            <span class="label-input100">Correo:</span>
-            <input class="input100" type="email" formControlName="correo">
-            <span class="focus-input100"></span>
-          </div>
-
-          <div class="wrap-input100 validate-input m-b-18">
-            <span class="label-input100">Contraseña:</span>
-            <input class="input100" type="password" name="clave" formControlName="clave">
-            <span class="focus-input100"></span>
-          </div>
+        <form class="p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="example-full-width w-100 m-2">
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="Correo" formControlName="correo">
+          </mat-form-field>
+          <mat-form-field class="example-full-width w-100 m-2">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Contraseña" formControlName="clave" type="password">
+          </mat-form-field>
 
           <!--<div class="flex-sb-m w-full p-b-30">
 						<div class="contact100-form-checkbox">
@@ -62,8 +57,8 @@
 						</div>-
 					</div>-->
 
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn" type="submit">
+          <div class="container-login100-form-btn  m-2">
+            <button mat-flat-button color="basic" class="w-100" >
               Ingresar
             </button>
           </div>
