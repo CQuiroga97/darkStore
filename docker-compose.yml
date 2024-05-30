@@ -175,7 +175,7 @@ services:
       - ./flyway/:/flyway/sql
     depends_on:
       - dark-store-db
-    command: -url=jdbc:postgresql://darkstore-db.czyqgkyssdoq.us-east-1.rds.amazonaws.com:5432/postgres -user=darkstore -password=darkstore -locations=filesystem:/flyway/sql -validateMigrationNaming=true -baselineOnMigrate=true migrate
+    command: -url=jdbc:postgresql://darkstore-db.czyqgkyssdoq.us-east-1.rds.amazonaws.com:5432/darkstore -user=darkstore -password=darkstore -locations=filesystem:/flyway/sql -validateMigrationNaming=true -baselineOnMigrate=true migrate
     networks:
       - darkstore-network
   nginx:
