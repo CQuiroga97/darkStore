@@ -51,7 +51,7 @@ export class Product {
         () => IncomeDetail,
         (incomeDetail: IncomeDetail) => incomeDetail.product,
     )
-    incomeDetails: Income[];
+    incomeDetails: IncomeDetail[];
 
     @OneToMany(
         () => DispatchDetail,
