@@ -47,12 +47,12 @@ export class Product {
     @JoinColumn({ name: 'categoria_producto_id' })
     category: Category;
 
-    @OneToMany(
-        () => IncomeDetail,
-        (incomeDetail: IncomeDetail) => incomeDetail.product,
-    )
-    @JoinColumn({ name: 'producto_id' })
-    incomeDetails: IncomeDetail[];
+    // @OneToMany(
+    //     () => IncomeDetail,
+    //     (incomeDetail: IncomeDetail) => incomeDetail.product,
+    // )
+    // @JoinColumn({ name: 'producto_id' })
+    // incomeDetails: IncomeDetail[];
 
     @OneToMany(
         () => DispatchDetail,
