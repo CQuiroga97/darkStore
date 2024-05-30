@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
       {
-        name: 'app',
+        name: 'Income',
         script: 'src/app.ts',
         interpreter: 'bun',
         env: {
