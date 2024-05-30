@@ -15,19 +15,20 @@ export class ReportesComponent {
 
   constructor(private requestService: RequestService) { }
 
-  generarReporteInventario() {
-    this.requestService.request_reportes('report/income', {}).then((res: any) => {
+  descargarReporteInventario() {
+
+    /*this.requestService.request_reportes('report/income', {}).then((res: any) => {
       console.log(res);
     }).catch((err: any) => {
       console.log(err);
-    });
+    });*/
   }
-  generarReporteIngreso() {
-    this.requestService.request_reportes('report/income', {}).then((res: any) => {
+  descargarReporteIngreso() {
+    /*this.requestService.request_reportes('report/income', {}).then((res: any) => {
       console.log(res);
     }).catch((err: any) => {
       console.log(err);
-    });
+    });*/
   }
 
   downloadReport(data: any, columnHeader:string[], filename = 'reporte.csv') {
