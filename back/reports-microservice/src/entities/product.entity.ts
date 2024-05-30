@@ -51,6 +51,7 @@ export class Product {
         () => IncomeDetail,
         (incomeDetail: IncomeDetail) => incomeDetail.product,
     )
+    @JoinColumn({ name: 'producto_id' })
     incomeDetails: IncomeDetail[];
 
     @OneToMany(
