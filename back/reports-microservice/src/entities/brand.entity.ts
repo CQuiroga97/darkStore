@@ -18,9 +18,9 @@ export class Brand {
     name: string;
 
     //relationships
-    @OneToMany(() => Product, (product) => product.brand)
-    @JoinColumn({ name: 'marca_id' })
-    products: Product[];
+    // @OneToMany(() => Product, (product) => product.brand)
+    // @JoinColumn({ name: 'marca_id' })
+    // products: Product[];
 
     @OneToMany(() => Income, (income: Income) => income.brand)
     incomes: Income[];
