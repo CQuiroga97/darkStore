@@ -10,6 +10,20 @@ services:
       - flyway
     networks:
       - darkstore-network
+  products:
+    container_name: products
+    restart: unless-stopped
+    build:
+      context: ./back/producs-microservice
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "4000:3000"
+    depends_on:
+      - dark-store-db
+      - flyway
+    networks:
+      - darkstore-network
   products-dev:
     container_name: products-dev
     restart: unless-stopped
