@@ -33,7 +33,7 @@ export class Income {
 
     @OneToMany(
         () => IncomeDetail,
-        (incomeDetail: IncomeDetail) => incomeDetail.income,
+        (incomeDetail: IncomeDetail) => incomeDetail.incomeId,
     )
     incomeDetails: IncomeDetail[];
 
